@@ -32,7 +32,7 @@ public class Esercizio {
 
 		
 		
-		List<Product> prodottiBaby = myProducts.stream().filter(x -> x.getCategory().equals("Baby")).collect(Collectors.toList());
+		List<Product> prodottiBaby = myProducts.stream().filter(x -> x.getCategory().equals("Baby")).toList();
 		
 		List<Order> myOrders = new ArrayList<>();
 		
@@ -41,14 +41,13 @@ public class Esercizio {
 	    myOrders.add(new Order(random.nextLong(100), "inevaso", LocalDate.now().minusDays(2), LocalDate.now().plusDays(2), prodottiBaby, luca));
 		
 		
-		List<Product> librimaggiore100 = myProducts.stream().filter( x -> x.getCategory().equals("Books") && x.getPrice() > 100)
-				.collect(Collectors.toList());
+		List<Product> librimaggiore100 = myProducts.stream().filter( x -> x.getCategory().equals("Books") && x.getPrice() > 100).toList();
 		
 		List<Product> prodottiBoys = myProducts.stream().filter(x -> x.getCategory().equals("Boys")).map(x -> {
 			double sconto = x.getPrice()*0.90;
 			x.setPrice(sconto);
 			return x;
-			}).collect(Collectors.toList());
+			}).toList();
 		
 		
 		for (Product product: librimaggiore100) {
